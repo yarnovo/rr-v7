@@ -1,22 +1,20 @@
 ![App screenshot](public/screenshot.jpg)
 
-  <h1 align="center">Remix and Supabase Starter Kit</h1>
+  <h1 align="center">React Router and Supabase Starter Kit</h1>
 
 <p align="center">
- The fastest way to build apps with Remix and Supabase
+ The fastest way to build apps with React Router and Supabase
 </p>
 
 <p align="center">
   <a href="#features"><strong>Features</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
+  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a>
 </p>
 <br/>
 
 ## Features
 
-- Works across the entire [Remix](https://remix.run) stack
+- Works across the entire [React Router](https://reactrouter.com/) stack
   - Loaders
   - Actions
   - Auth
@@ -31,10 +29,10 @@
 
 1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
 
-2. Create a Remix app using the Supabase Starter template npx command
+2. Create a React Router app using the Supabase Starter template npx command
 
    ```bash
-   npx create-remix@latest --template https://github.com/saltcod/remix-quickstart
+    npx create-react-router@latest --template https://github.com/saltcod/rr-v7
    ```
 
 3. Use `cd` to change into the app's directory
@@ -52,7 +50,7 @@
 
    Both `SUPABASE_URL` and `SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
 
-5. You can now run the Remix local development server:
+5. You can now run the React Router local development server:
 
    ```bash
    npm run dev
