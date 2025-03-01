@@ -41,18 +41,20 @@ export default function Page({ loaderData }: Route.ComponentProps) {
   }, [fetcher])
 
   return (
-    <div>
-      <h1>Notes</h1>
+    <div className="flex-1 w-full flex flex-col gap-12 max-w-5xl mx-auto">
+      <div className="w-full max-w-5xl mx-auto mt-12">
+        <h1>Notes</h1>
 
-      <fetcher.Form ref={formRef} method="post" className="mb-6">
-        <div className="grid gap-4">
-          <textarea name="title" className="border rounded p-2" placeholder="Write your note..." />
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-            {fetcher.state === 'submitting' ? 'Adding note...' : 'Add Note'}
-          </button>
-        </div>
-      </fetcher.Form>
-      <pre>{JSON.stringify(notes, null, 2)}</pre>
+        <fetcher.Form ref={formRef} method="post" className="mb-6">
+          <div className="grid gap-4">
+            <textarea name="title" className="border rounded p-2" placeholder="Write your note..." />
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+              {fetcher.state === 'submitting' ? 'Adding note...' : 'Add Note'}
+            </button>
+          </div>
+        </fetcher.Form>
+        <pre>{JSON.stringify(notes, null, 2)}</pre>
+      </div>
     </div>
   )
 }

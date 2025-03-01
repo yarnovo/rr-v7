@@ -1,11 +1,10 @@
-import { Link } from 'react-router'
+import { Link, useRouteLoaderData } from 'react-router'
 
 import { EnvVarWarning } from './EnvVarWarning'
 import HeaderNav from './HeaderNav'
-import type { Route } from '../+types/root'
 
-export default function Header({ loaderData }: Route.ComponentProps) {
-  const { hasEnvVars } = loaderData
+export default function Header() {
+  const { hasEnvVars } = useRouteLoaderData('root')
 
   return (
     <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
@@ -13,7 +12,7 @@ export default function Header({ loaderData }: Route.ComponentProps) {
         <div className="flex gap-5 items-center font-semibold">
           <Link to={'/'}>React Router Supabase Starter</Link>
         </div>
-        {!hasEnvVars ? <EnvVarWarning /> : <HeaderNav loaderData={loaderData} />}
+        {!hasEnvVars ? <EnvVarWarning /> : <HeaderNav />}
       </div>
     </nav>
   )

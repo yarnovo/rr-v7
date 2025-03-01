@@ -2,7 +2,6 @@ import { Form, Link, NavLink, useRouteLoaderData } from 'react-router'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import { cn } from '~/lib/utils'
-import type { Route } from '../+types/root'
 
 export default function HeaderNav() {
   const { hasEnvVars, user } = useRouteLoaderData('root')
