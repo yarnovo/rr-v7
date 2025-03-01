@@ -1,100 +1,69 @@
-# Welcome to React Router!
+![App screenshot](public/screenshot.jpg)
 
-A modern, production-ready template for building full-stack React applications using React Router.
+  <h1 align="center">Remix and Supabase Starter Kit</h1>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+<p align="center">
+ The fastest way to build apps with Remix and Supabase
+</p>
+
+<p align="center">
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
+  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
+  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
+</p>
+<br/>
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Works across the entire [Remix](https://remix.run) stack
+  - Loaders
+  - Actions
+  - Auth
+  - Client
+  - Server
+  - It just works!
+- supabase-ssr. A package to configure Supabase Auth to use cookies
+- Styling with [Tailwind CSS](https://tailwindcss.com)
+- Components with [shadcn/ui](https://ui.shadcn.com/)
 
-## Getting Started
+## Clone and run locally
 
-### Installation
+1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
 
-Install the dependencies:
+2. Create a Remix app using the Supabase Starter template npx command
 
-```bash
-npm install
-```
+   ```bash
+   npx create-remix@latest --template https://github.com/saltcod/remix-quickstart
+   ```
 
-### Development
+3. Use `cd` to change into the app's directory
 
-Start the development server with HMR:
+   ```bash
+   cd name-of-new-app
+   ```
 
-```bash
-npm run dev
-```
+4. Rename `.env.example` to `.env.local` and update the following:
 
-Your application will be available at `http://localhost:5173`.
+   ```
+   SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
+   SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
+   ```
 
-## Building for Production
+   Both `SUPABASE_URL` and `SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
 
-Create a production build:
+5. You can now run the Remix local development server:
 
-```bash
-npm run build
-```
+   ```bash
+   npm run dev
+   ```
 
-## Deployment
+   The starter kit should now be running on [localhost:5173](http://localhost:5173/).
 
-### Docker Deployment
+6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
 
-This template includes three Dockerfiles optimized for different package managers:
+> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
 
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
+## Feedback and issues
 
-To build and run using Docker:
-
-```bash
-# For npm
-docker build -t my-app .
-
-# For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
-
-# For bun
-docker build -f Dockerfile.bun -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
