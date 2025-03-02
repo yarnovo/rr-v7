@@ -1,9 +1,9 @@
 ![App screenshot](public/screenshot.jpg)
 
-  <h1 align="center">React Router and Supabase Starter Kit</h1>
+<h1 align="center">React Router and Supabase Starter Kit</h1>
 
 <p align="center">
- The fastest way to build apps with React Router and Supabase
+ The fastest way to build apps with React Router and Supabase. Remix and React Router were [merged together](https://remix.run/blog/incremental-path-to-react-19) and React Router v7 is now the recommended starting point.
 </p>
 
 <p align="center">
@@ -14,7 +14,8 @@
 
 ## Features
 
-- Works across the entire [React Router](https://reactrouter.com/) stack
+- Works across the entire [React Router](https://reactrouter.com/) stack, using the framework installation:
+  - Vite server
   - Loaders
   - Actions
   - Auth
