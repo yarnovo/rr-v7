@@ -10,7 +10,6 @@ export async function loader() {
 
 export default function Index({ loaderData }: Route.ComponentProps) {
   const { hasEnvVars } = loaderData
-
   return (
     <div className="p-5">
       <Hero />

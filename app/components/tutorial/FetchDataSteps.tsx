@@ -15,38 +15,38 @@ values
 `.trim()
 
 const server = `
-import { json, LoaderFunctionArgs, ActionFunctionArgs } from 'react-router'
-import { useLoaderData, useFetcher } from 'react-router'
-import { createClient } from '~/utils/supabase.server'
+import { useFetcher } from 'react-router'
+import { createClient } from '~/lib/supabase.server'
 import { useRef, useEffect } from 'react'
+import type { Route } from './+types/notes'
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request }: Route.LoaderArgs) {
   const { supabase } = createClient(request)
 
   const { data: notes } = await supabase.from('notes').select()
 
-  return json({
+  return {
     notes,
-  })
+  }
 }
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ request }: Route.ActionArgs) {
   const { supabase } = createClient(request)
   const formData = await request.formData()
   const title = formData.get('title')
 
   if (typeof title !== 'string' || !title) {
-    return json({ error: 'Title is required' }, { status: 400 })
+    return { error: 'Title is required' }
   }
 
   await supabase.from('notes').insert({ title })
-  return json({ success: true })
+  return { success: true }
 }
 
 type ActionResponse = { success: boolean } | { error: string }
 
-export default function Page() {
-  const { notes } = useLoaderData<typeof loader>()
+export default function Page({ loaderData }: Route.ComponentProps) {
+  const { notes } = loaderData
   const fetcher = useFetcher<ActionResponse>()
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -58,22 +58,23 @@ export default function Page() {
   }, [fetcher])
 
   return (
-    <div>
-      <h1>Notes</h1>
+    <div className="flex-1 w-full flex flex-col gap-12 max-w-5xl mx-auto">
+      <div className="w-full max-w-5xl mx-auto mt-12">
+        <h1>Notes</h1>
 
-      <fetcher.Form ref={formRef} method="post" className="mb-6">
-        <div className="grid gap-4">
-          <textarea name="title" className="border rounded p-2" placeholder="Write your note..." />
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-            {fetcher.state === 'submitting' ? 'Adding note...' : 'Add Note'}
-          </button>
-        </div>
-      </fetcher.Form>
-      <pre>{JSON.stringify(notes, null, 2)}</pre>
+        <fetcher.Form ref={formRef} method="post" className="mb-6">
+          <div className="grid gap-4">
+            <textarea name="title" className="border rounded p-2" placeholder="Write your note..." />
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+              {fetcher.state === 'submitting' ? 'Adding note...' : 'Add Note'}
+            </button>
+          </div>
+        </fetcher.Form>
+        <pre>{JSON.stringify(notes, null, 2)}</pre>
+      </div>
     </div>
   )
 }
-
 `.trim()
 
 export default function FetchDataSteps() {

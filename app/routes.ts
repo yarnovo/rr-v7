@@ -5,6 +5,7 @@ export default [
   route('notes', 'routes/notes.tsx'),
   route('sign-in', 'routes/sign-in.tsx'),
   route('sign-up', 'routes/sign-up.tsx'),
+  route('sign-out', 'routes/sign-out.tsx'),
   route('forgot-password', 'routes/forgot-password.tsx'),
   route('protected', 'routes/protected.tsx'),
 ] satisfies RouteConfig
