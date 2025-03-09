@@ -28,7 +28,7 @@
 
 ## Clone and run locally
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+1. You'll first need a Supabase project which can be made [via the Supabase Dashboard](https://database.new)
 
 2. Create a React Router app using the Supabase Starter template npx command
 
