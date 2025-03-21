@@ -1,4 +1,4 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'react-router'
 
 import type { Route } from './+types/root'
 import './app.css'
@@ -20,7 +20,12 @@ export const links: Route.LinksFunction = () => [
 ]
 
 export async function loader({ request }: Route.LoaderArgs) {
-  const hasEnvVars = !!(process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY)
+  const ENV_VARS = {
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
+  }
+
+  const hasEnvVars = !!(ENV_VARS.SUPABASE_URL && ENV_VARS.SUPABASE_ANON_KEY)
 
   let user = undefined
   if (hasEnvVars) {
@@ -34,6 +39,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   return {
     user,
     hasEnvVars,
+    ENV_VARS,
   }
 }
 
@@ -52,6 +58,12 @@ export function meta() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useLoaderData() as {
+    ENV_VARS: {
+      SUPABASE_URL: string
+      SUPABASE_ANON_KEY: string
+    }
+  }
   return (
     <html lang="en">
       <head>
@@ -65,6 +77,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+
+        {/* Inject public env vars into window.ENV */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV_VARS)};`,
+          }}
+        />
       </body>
     </html>
   )

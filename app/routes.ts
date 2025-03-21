@@ -8,4 +8,5 @@ export default [
   route('sign-out', 'routes/sign-out.tsx'),
   route('forgot-password', 'routes/forgot-password.tsx'),
   route('protected', 'routes/protected.tsx'),
+  route('client-side-notes', 'routes/client-side-notes.tsx'),
 ] satisfies RouteConfig
