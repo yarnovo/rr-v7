@@ -9,4 +9,6 @@ export default [
   route('forgot-password', 'routes/forgot-password.tsx'),
   route('protected', 'routes/protected.tsx'),
   route('client-side-notes', 'routes/client-side-notes.tsx'),
+  route('dropzone', 'routes/dropzone.tsx'),
+  route('update-password', 'routes/update-password.tsx'),
 ] satisfies RouteConfig

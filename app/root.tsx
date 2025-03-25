@@ -78,10 +78,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ScrollRestoration />
         <Scripts />
 
-        {/* Inject public env vars into window.ENV */}
+        {/* Inject ENV vars after Scripts */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(data.ENV_VARS)};`,
+            __html: `window.ENV = ${JSON.stringify(data.ENV_VARS)}`,
           }}
         />
       </body>
