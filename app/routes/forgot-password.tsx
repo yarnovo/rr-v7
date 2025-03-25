@@ -1,4 +1,4 @@
-import { type ActionFunctionArgs, Form, Link, data, useActionData } from 'react-router'
+import { type ActionFunctionArgs, Form, data, useActionData } from 'react-router'
 import { AuthApiError } from '@supabase/supabase-js'
 import { createClient } from '~/lib/supabase.server'
 import { Input } from '~/components/ui/input'
